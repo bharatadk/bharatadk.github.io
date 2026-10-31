@@ -9,7 +9,19 @@
 <meta property="og:title" content="Bharat Adhikari — Full Stack Developer">
 <meta property="og:description" content="Building useful things for the web and beyond.">
 <meta property="og:url" content="https://bharat-adhikari.com.np/">
-<meta name="color-scheme" content="light">
+<meta name="color-scheme" content="light dark">
+<script>
+/* Resolve color preference before the stylesheet to prevent a light-theme flash. */
+(function () {
+  const key = 'bharat-portfolio-theme';
+  let preference = 'system';
+  try { const saved = localStorage.getItem(key); if (saved === 'light' || saved === 'dark') preference = saved; } catch (_) {}
+  const systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const effective = preference === 'system' ? (systemDark ? 'dark' : 'light') : preference;
+  document.documentElement.dataset.theme = effective;
+  document.documentElement.dataset.themePreference = preference;
+})();
+</script>
 <link rel="canonical" href="https://bharat-adhikari.com.np/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2310151c'/%3E%3Ctext x='32' y='43' font-family='Arial' font-size='30' fill='%23c7fa84' font-weight='bold' text-anchor='middle'%3EBA%3C/text%3E%3C/svg%3E">
 <title>Bharat Adhikari — Software Engineer</title>
@@ -184,6 +196,105 @@ html{scroll-padding-top:94px}
 .site-brand .brand-description{color:#7e9083}
 .site-brand .brand-name>span{color:#00b300}
 .site-nav .nav-cta.is-active{box-shadow:0 0 0 3px rgba(0,215,0,.15),inset 0 1px 0 rgba(255,255,255,.4)}
+
+/* User-selectable system / light / dark theme. Keep the brand green in both. */
+:root{--theme-control-bg:rgba(255,255,255,.65);--theme-control-text:#65746a;--theme-control-selected:#e7fae8}
+.theme-switch{display:inline-flex;align-items:center;gap:2px;padding:4px;border:1px solid rgba(196,217,202,.74);border-radius:999px;background:var(--theme-control-bg);flex-shrink:0}
+.theme-option{display:inline-flex;align-items:center;justify-content:center;gap:6px;width:34px;height:35px;padding:0;border:0;border-radius:999px;cursor:pointer;color:var(--theme-control-text);background:transparent;transition:background .2s,color .2s,box-shadow .2s}
+.theme-option svg{width:16px;height:16px;stroke-width:1.8}
+.theme-option span{display:none}
+.theme-option:hover{background:rgba(0,215,0,.09);color:#145d21}
+.theme-option[aria-pressed="true"]{background:var(--theme-control-selected);color:#156625;box-shadow:inset 0 0 0 1px rgba(0,167,0,.14)}
+.theme-option:focus-visible{outline:2px solid #00bd00;outline-offset:2px}
+@media(max-width:960px) and (min-width:761px){
+  .site-header .nav-inner{gap:8px}
+  .site-nav .nav-links{gap:0}
+  .site-nav .nav-link{padding-left:9px;padding-right:9px}
+  .site-nav .nav-cta{padding-left:12px;padding-right:12px}
+}
+@media(max-width:760px){
+  .theme-switch{width:100%;border-radius:10px;justify-content:space-between;padding:4px}
+  .theme-option{flex:1;width:auto;border-radius:7px;min-height:41px;font-size:13px;font-weight:600}
+  .theme-option span{display:inline}
+  .site-nav .theme-switch{order:1}
+  .site-nav .nav-cta{order:2}
+}
+@media(prefers-reduced-motion:reduce){.theme-option{transition:none}}
+html[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0e1511;--panel:#18211b;--text:#edf5ee;--muted:#a7b6aa;--border:#304236;
+  --glass-edge:rgba(255,255,255,.1);
+  --glass-shadow:0 12px 36px rgba(0,0,0,.12),0 2px 9px rgba(0,0,0,.12);
+  --theme-control-bg:rgba(19,30,22,.7);
+  --theme-control-text:#b4c6b6;
+  --theme-control-selected:rgba(0,215,0,.18);
+  background:var(--bg)
+}
+html[data-theme="dark"] body{background:var(--bg);color:var(--text)}
+html[data-theme="dark"] .site-header{background:rgba(15,23,18,.8);border-color:rgba(95,131,102,.32);box-shadow:0 8px 22px rgba(0,0,0,.12)}
+html[data-theme="dark"] .site-header.is-scrolled{background:rgba(15,23,18,.94);border-color:rgba(95,131,102,.48);box-shadow:0 8px 26px rgba(0,0,0,.23)}
+html[data-theme="dark"] .site-brand .brand-name{color:#f0f7f1}
+html[data-theme="dark"] .site-brand .brand-description{color:#a2b5a5}
+html[data-theme="dark"] .site-brand .brand-monogram{background:#26392b;color:#fff;box-shadow:0 3px 12px rgba(0,0,0,.25)}
+html[data-theme="dark"] .brand-pixel{border-color:#142218}
+html[data-theme="dark"] .site-nav .nav-links,html[data-theme="dark"] .theme-switch{background:rgba(26,40,30,.72);border-color:rgba(99,140,108,.3);box-shadow:inset 0 1px 0 rgba(255,255,255,.035)}
+html[data-theme="dark"] .site-nav .nav-link{color:#b2c4b6}
+html[data-theme="dark"] .site-nav .nav-link:hover{background:rgba(0,215,0,.09);color:#e6f9e8}
+html[data-theme="dark"] .site-nav .nav-link.is-active{background:rgba(0,215,0,.16);color:#76ed7d;box-shadow:inset 0 0 0 1px rgba(0,215,0,.14)}
+html[data-theme="dark"] .site-nav .nav-cta{background:#00D700;color:#102511;border-color:#00c500}
+html[data-theme="dark"] .site-nav .nav-cta:hover{background:#28ec28;color:#0d230e}
+html[data-theme="dark"] .theme-option:hover{background:rgba(0,215,0,.1);color:#b3f5b6}
+html[data-theme="dark"] .theme-option[aria-pressed="true"]{color:#8dff91;box-shadow:inset 0 0 0 1px rgba(0,215,0,.2)}
+html[data-theme="dark"] .nav-menu-button{color:#e5f1e7;background:rgba(28,44,32,.9);border-color:#3b5941}
+html[data-theme="dark"] .hero{background:radial-gradient(ellipse 36% 75% at 87% 39%,rgba(0,215,0,.075),transparent 88%),linear-gradient(145deg,#101913 19%,#142118 100%);border-color:var(--border)}
+html[data-theme="dark"] .hero-grid{background-image:linear-gradient(#00d70012 1px,transparent 1px),linear-gradient(90deg,#00d70012 1px,transparent 1px)}
+html[data-theme="dark"] .hero-glass-sheet{border-color:rgba(110,153,120,.22);background:linear-gradient(130deg,rgba(49,76,56,.2),rgba(20,41,26,.23));box-shadow:0 12px 40px rgba(0,0,0,.2),inset 1px 1px 0 rgba(166,219,175,.07)}
+html[data-theme="dark"] .hero-glass-sheet:after{border-color:rgba(0,215,0,.1)}
+html[data-theme="dark"] .hero-line,html[data-theme="dark"] h1 em{color:var(--text)}
+html[data-theme="dark"] .lead,html[data-theme="dark"] .about-copy,html[data-theme="dark"] .desc{color:#bac9bd}
+html[data-theme="dark"] .hero-meta{color:#b6c9bb}
+html[data-theme="dark"] .hero-meta span{background:rgba(26,45,31,.65);border-color:rgba(103,148,113,.36);box-shadow:inset 0 1px 0 rgba(255,255,255,.045)}
+html[data-theme="dark"] .hero-code{color:#84ac88}
+html[data-theme="dark"] .geo-triangle:after{background:#101913}
+html[data-theme="dark"] .shape,.geo{filter:brightness(1.35)}
+html[data-theme="dark"] #about{background:radial-gradient(ellipse 42% 65% at 92% 51%,rgba(0,215,0,.04),transparent 95%),#101a14}
+html[data-theme="dark"] #skills{background:radial-gradient(ellipse 55% 60% at 8% 49%,rgba(0,215,0,.052),transparent 92%),linear-gradient(120deg,#111c15,#131e17)}
+html[data-theme="dark"] #work{background:radial-gradient(ellipse 43% 42% at 89% 32%,rgba(0,215,0,.055),transparent 93%),#101a14}
+html[data-theme="dark"] #experience{background:radial-gradient(ellipse 50% 65% at 6% 55%,rgba(0,215,0,.035),transparent 95%),#121b15}
+html[data-theme="dark"] #contact{background:radial-gradient(ellipse 38% 55% at 96% 36%,rgba(0,215,0,.055),transparent 93%),linear-gradient(135deg,#101a14,#15221a)}
+html[data-theme="dark"] section{border-color:var(--border)}
+html[data-theme="dark"] .fact-list,html[data-theme="dark"] .skill,html[data-theme="dark"] .project,html[data-theme="dark"] .contact-item{
+  background:linear-gradient(132deg,rgba(35,53,40,.8),rgba(22,37,27,.71));
+  border-color:rgba(111,154,120,.29);
+  box-shadow:var(--glass-shadow),inset 0 1px 0 rgba(255,255,255,.045);
+}
+html[data-theme="dark"] .skill:hover,html[data-theme="dark"] .project:hover,html[data-theme="dark"] .contact-item[href]:hover{
+ background:linear-gradient(135deg,rgba(43,70,49,.91),rgba(26,48,32,.88));border-color:rgba(0,215,0,.39);box-shadow:0 12px 28px rgba(0,0,0,.18)
+}
+html[data-theme="dark"] .fact-list div{border-color:#34483a}
+html[data-theme="dark"] .fact-list span:first-child{color:#aab9ad}
+html[data-theme="dark"] .button:not(.primary){background:rgba(37,54,41,.88);border-color:rgba(108,148,116,.4);color:#e9f5eb;box-shadow:inset 0 1px 0 rgba(255,255,255,.05)}
+html[data-theme="dark"] .button:not(.primary):hover{background:rgba(48,73,54,.9);border-color:rgba(0,215,0,.45)}
+html[data-theme="dark"] .button.primary{background:#00D700;color:#102510;border-color:#00ca00}
+html[data-theme="dark"] .button.primary:hover{background:#27e927;color:#0c230e}
+html[data-theme="dark"] .tag{background:rgba(58,86,64,.38);border-color:rgba(112,150,119,.32);color:#bcd3c0}
+html[data-theme="dark"] .experience{border-color:#324539}
+html[data-theme="dark"] .experience p,html[data-theme="dark"] .experience-list{color:#b5c5b8}
+html[data-theme="dark"] .experience-list strong{color:var(--text)}
+html[data-theme="dark"] .experience .company{color:#7be87f}
+html[data-theme="dark"] .contact-item small{color:#b6c8b9}
+html[data-theme="dark"] .contact-item>svg:first-child,html[data-theme="dark"] .skill-icon{color:#5bea63}
+html[data-theme="dark"] footer{background:#101813}
+html[data-theme="dark"] .foot{color:#a7b6aa}
+html[data-theme="dark"] .footlinks a:hover{color:#65ea6c}
+@media(max-width:760px){
+ html[data-theme="dark"] .site-nav,html[data-theme="dark"] .site-nav.open{background:rgba(19,31,23,.98);border-color:rgba(96,145,105,.38);box-shadow:0 20px 40px rgba(0,0,0,.3)}
+}
+@supports not (backdrop-filter:blur(1px)){
+ html[data-theme="dark"] .site-header{background:#142017}
+ html[data-theme="dark"] .fact-list,html[data-theme="dark"] .skill,html[data-theme="dark"] .project,html[data-theme="dark"] .contact-item{background:#1c2b20}
+}
+
 </style>
 <script defer src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
 </head>
@@ -206,6 +317,11 @@ html{scroll-padding-top:94px}
         <a class="nav-link" href="#skills">Skills</a>
         <a class="nav-link" href="#work">Projects</a>
         <a class="nav-link" href="#experience">Experience</a>
+      </div>
+      <div class="theme-switch" role="group" aria-label="Color theme">
+        <button type="button" class="theme-option" data-theme-choice="system" aria-label="Use system theme" title="System theme" aria-pressed="false"><i data-lucide="monitor" aria-hidden="true"></i><span>Auto</span></button>
+        <button type="button" class="theme-option" data-theme-choice="light" aria-label="Use light theme" title="Light theme" aria-pressed="false"><i data-lucide="sun" aria-hidden="true"></i><span>Light</span></button>
+        <button type="button" class="theme-option" data-theme-choice="dark" aria-label="Use dark theme" title="Dark theme" aria-pressed="false"><i data-lucide="moon" aria-hidden="true"></i><span>Dark</span></button>
       </div>
       <a href="#contact" class="nav-cta"><span>Let's talk</span><i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
     </nav>
@@ -274,6 +390,26 @@ if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-mot
   document.querySelectorAll('section .section-head, section .about-grid, section .skill, section .project, section .experience, section .contact-grid').forEach(el => { el.classList.add('reveal'); observer.observe(el); });
 }
 // A single scroll listener drives the slim progress line and active navigation state.
+// System is the default. Manual choices are stored; system preference is live.
+const themeKey='bharat-portfolio-theme';
+const themeButtons=Array.from(document.querySelectorAll('[data-theme-choice]'));
+const systemScheme=window.matchMedia('(prefers-color-scheme: dark)');
+function getThemePreference(){
+  const current=document.documentElement.dataset.themePreference;
+  return current==='dark'||current==='light'?current:'system';
+}
+function updateTheme(preference,persist){
+  const effective=preference==='system'?(systemScheme.matches?'dark':'light'):preference;
+  document.documentElement.dataset.theme=effective;
+  document.documentElement.dataset.themePreference=preference;
+  document.querySelector('meta[name="theme-color"]').setAttribute('content',effective==='dark'?'#0e1511':'#f8f9fb');
+  for(const button of themeButtons)button.setAttribute('aria-pressed',String(button.dataset.themeChoice===preference));
+  if(persist){try{if(preference==='system')localStorage.removeItem(themeKey);else localStorage.setItem(themeKey,preference);}catch(_){/* Storage may be disabled. */}}
+}
+for(const button of themeButtons)button.addEventListener('click',()=>updateTheme(button.dataset.themeChoice,true));
+systemScheme.addEventListener('change',()=>{if(getThemePreference()==='system')updateTheme('system',false);});
+updateTheme(getThemePreference(),false);
+
 const toggle=document.getElementById('menu');
 const nav=document.getElementById('navigation');
 const siteHeader=document.getElementById('site-header');
