@@ -27,51 +27,14 @@ section{padding:79px 0;border-bottom:1px solid var(--border);scroll-margin-top:8
 .contact-intro{max-width:660px;margin:18px 0 28px;color:var(--muted);font-size:16px}.contact-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;max-width:900px}.contact-item{display:flex;align-items:center;gap:15px;padding:18px 20px;border:1px solid var(--border);border-radius:9px;background:#fff;min-width:0}.contact-item>svg:first-child{width:21px;height:21px;color:var(--accent);flex-shrink:0}.contact-item span{min-width:0;display:flex;flex-direction:column}.contact-item strong{font-size:13px}.contact-item small{font-size:14px;color:var(--muted);overflow-wrap:anywhere}.contact-arrow{margin-left:auto;color:#6a7c6d}.contact-item[href]:hover{border-color:#8fdb90;background:#f5fff5}.contact-location{cursor:default}@media(max-width:680px){.contact-grid{grid-template-columns:1fr}.contact-item{padding:16px}}
 .primary{color:#102010}.primary:hover{color:#102010}.eyebrow,.kicker{color:#087b08}.brand span{color:#00D700}.project .type{color:#276c2b}.contact-item>svg:first-child,.skill-icon{color:#078b07}.button:focus-visible,a:focus-visible,button:focus-visible{outline-color:#00D700}
 
-/* Visual direction: architectural drawing, not particles or generic dashboard UI.
-   Only transforms and opacity animate; decorative elements never intercept input. */
-.hero{position:relative;isolation:isolate;overflow:hidden}
-.hero-content{position:relative;z-index:1}
-.hero-art{position:absolute;inset:0;overflow:hidden;z-index:0;pointer-events:none}
-.blueprint-grid{position:absolute;inset:0;background-image:linear-gradient(to right,#194b2708 1px,transparent 1px),linear-gradient(to bottom,#194b2708 1px,transparent 1px);background-size:56px 56px;mask-image:linear-gradient(to right,transparent 15%,#000 75%);opacity:.8}
-.blueprint-scan{position:absolute;right:0;top:0;height:100%;width:38%;background:linear-gradient(90deg,transparent,#00d70007 48%,transparent);transform:translateX(100%);animation:scan-across 26s linear infinite}
-.architecture{position:absolute;width:min(56vw,650px);height:auto;right:-20px;top:50%;transform:translateY(-52%);opacity:.65;filter:drop-shadow(0 10px 25px #22572b06)}
-.architecture-guides{opacity:.9}.route-base{stroke:#a2c4ab;stroke-width:1.5}
-.route-motion{stroke:#00aa00;stroke-width:2;stroke-dasharray:6 18;animation:route-progress 9s linear infinite}
-.route-motion-alt{animation-duration:11s;animation-direction:reverse}
-.route-motion-late{animation-duration:14s}
-.arch-unit rect{fill:#fff;fill-opacity:.82;stroke:#d0ddd3;stroke-width:1.5}
-.arch-kicker{font:600 10px ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:1px;fill:#588562}
-.arch-label{font:600 15px system-ui,-apple-system,sans-serif;fill:#3b6150}
-.arch-led{fill:#00d700}
-.architecture-junctions{fill:#fff;stroke:#71a87e;stroke-width:1.3}
-.arch-signal{fill:#00d700;fill-opacity:.25;stroke:#00b200;stroke-width:1.5;transform-box:fill-box;transform-origin:center;animation:signal-breathe 4.8s ease-in-out infinite}
-.arch-signal-two{animation-delay:1.4s}.arch-signal-three{animation-delay:2.7s}
-.arch-caption{font:10px ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:2px;fill:#8cad96}
-.blueprint-index{position:absolute;right:4%;bottom:20px;display:flex;gap:15px;font:10px ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.15em;color:#6f9f76}
-.blueprint-index span+span{padding-left:15px;border-left:1px solid #b9d4be}
-/* Quiet section textures provide continuity without competing with project content. */
-#skills,#work,#experience{position:relative;isolation:isolate;overflow:hidden}
-#skills>.wrap,#work>.wrap,#experience>.wrap{position:relative;z-index:1}
-#skills:before,#work:before,#experience:before{content:"";position:absolute;pointer-events:none;z-index:0}
-#skills:before{width:440px;height:440px;right:-180px;top:40px;background-image:radial-gradient(#00a10024 1px,transparent 1px);background-size:20px 20px;mask-image:radial-gradient(circle,#000 0%,transparent 70%)}
-#work:before{width:330px;height:330px;left:-185px;top:20%;border:1px solid #00a80019;border-radius:50%;box-shadow:0 0 0 45px #00a80006,0 0 0 90px #00a80005,0 0 0 135px #00a80004}
-#experience:before{width:340px;height:340px;right:-130px;bottom:10px;background:repeating-linear-gradient(135deg,transparent 0 19px,#008d0009 20px 21px);mask-image:radial-gradient(circle,#000,transparent 72%)}
-/* A short accent stroke on hover is more deliberate than an always-moving card. */
-.project{position:relative;overflow:hidden;transition:border-color .2s,box-shadow .2s,transform .2s}
-.project:before{content:"";position:absolute;top:0;left:0;height:2px;width:100%;background:#00d700;transform:scaleX(0);transform-origin:left;transition:transform .32s ease}
-.project:hover{transform:translateY(-3px)}.project:hover:before{transform:scaleX(1)}
-.hero-line{display:inline-block;animation:hero-enter .85s cubic-bezier(.2,.8,.2,1) both}
-.hero-line-delay{animation-delay:.16s}.hero .lead{animation:hero-enter .85s .3s both}.hero .actions{animation:hero-enter .85s .42s both}.hero .hero-meta{animation:hero-enter .85s .54s both}
-.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
-.reveal.is-visible{opacity:1;transform:none}
-@keyframes scan-across{0%,15%{transform:translateX(-200%)}80%,100%{transform:translateX(160%)}}
-@keyframes route-progress{to{stroke-dashoffset:-96}}
-@keyframes signal-breathe{0%,100%{opacity:.7;transform:scale(.75)}50%{opacity:1;transform:scale(1.25)}}
-@keyframes hero-enter{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
-@media(max-width:1000px){.architecture{right:-130px;opacity:.4;width:660px}.hero-content{background:linear-gradient(90deg,#fff 0%,#ffffffeb 38%,transparent 85%)}}
-@media(max-width:760px){.architecture{right:-255px;width:570px;opacity:.23}.blueprint-grid{opacity:.4}.blueprint-index{display:none}.hero-content{background:linear-gradient(90deg,#fff 5%,#ffffffed 70%,transparent)}}
-@media(max-width:480px){.architecture{right:-290px;opacity:.15}.blueprint-scan{display:none}}
-@media(prefers-reduced-motion:reduce){.blueprint-scan,.route-motion,.arch-signal,.hero-line,.hero .lead,.hero .actions,.hero .hero-meta{animation:none!important}.reveal{opacity:1!important;transform:none!important;transition:none!important}.project:hover{transform:none}}
+/* Decorative motion: no images, canvas, or animation libraries required. */
+.hero{isolation:isolate}.hero-content{position:relative;z-index:1}.hero-art{position:absolute;inset:0;overflow:hidden;z-index:0;pointer-events:none}.hero-grid{position:absolute;inset:0;background-image:linear-gradient(#00d7000b 1px,transparent 1px),linear-gradient(90deg,#00d7000b 1px,transparent 1px);background-size:42px 42px;mask-image:linear-gradient(90deg,transparent 10%,#000 100%);animation:grid-drift 25s linear infinite}.orb{position:absolute;border-radius:50%;filter:blur(3px);will-change:transform}.orb-one{width:290px;height:290px;right:7%;top:10%;background:radial-gradient(circle,#00d70012 0%,transparent 70%);animation:float-one 10s ease-in-out infinite}.orb-two{width:210px;height:210px;right:26%;bottom:-55px;background:radial-gradient(circle,#00d70010 0%,transparent 70%);animation:float-two 13s ease-in-out infinite}.shape{position:absolute;color:#00b600;opacity:.26;will-change:transform}.shape-square{width:45px;height:45px;border:2px solid #00d700;right:11%;top:27%;transform:rotate(20deg);animation:rotate-square 24s linear infinite}.shape-ring{width:77px;height:77px;border:2px solid #00d700;border-radius:50%;right:26%;bottom:17%;animation:float-two 9s ease-in-out infinite}.shape-plus{font-size:50px;font-weight:200;right:5%;bottom:22%;animation:float-one 8s ease-in-out infinite}.hero-code{position:absolute;right:4%;bottom:15px;font:11px ui-monospace,SFMono-Regular,monospace;letter-spacing:.2em;color:#66946a;opacity:.65}
+.hero-line{display:inline-block;animation:hero-enter .85s cubic-bezier(.2,.8,.2,1) both}.hero-line-delay{animation-delay:.16s}.hero .lead{animation:hero-enter .85s .3s both}.hero .actions{animation:hero-enter .85s .42s both}.hero .hero-meta{animation:hero-enter .85s .54s both}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1)}.reveal.is-visible{opacity:1;transform:none}
+.project{transition:border-color .2s,box-shadow .2s,transform .2s}.project:hover{transform:translateY(-4px)}
+@keyframes grid-drift{to{background-position:42px 42px}}@keyframes float-one{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(-14px,18px,0)}}@keyframes float-two{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(16px,-16px,0)}}@keyframes rotate-square{from{transform:rotate(20deg)}to{transform:rotate(380deg)}}@keyframes hero-enter{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:760px){.hero-grid{opacity:.35}.orb-one{right:-100px}.shape-square{right:5%;top:9%;opacity:.14}.shape-ring,.shape-plus,.hero-code{display:none}}
+@media(prefers-reduced-motion:reduce){.hero-grid,.orb,.shape,.hero-line,.hero .lead,.hero .actions,.hero .hero-meta{animation:none!important}.reveal{opacity:1!important;transform:none!important;transition:none!important}.project:hover{transform:none}}
 </style>
 <script defer src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
 </head>
@@ -79,57 +42,7 @@ section{padding:79px 0;border-bottom:1px solid var(--border);scroll-margin-top:8
 <a class="skip" href="#main">Skip to content</a>
 <header><div class="wrap nav"><a class="brand" href="#home" aria-label="Bharat Adhikari, home">bharat<span>.</span>dev</a><button class="menu" id="menu" aria-label="Toggle navigation" aria-controls="navigation" aria-expanded="false">Menu <i data-lucide="menu" aria-hidden="true"></i></button><nav id="navigation" aria-label="Main navigation"><a href="#about">About</a><a href="#skills">Skills</a><a href="#work">Projects</a><a href="#experience">Experience</a><a href="#contact" class="nav-cta">Let's talk <i data-lucide="arrow-up-right" aria-hidden="true"></i></a></nav></div></header>
 <main id="main">
-<div class="hero" id="home"><div class="hero-art" aria-hidden="true">
-  <div class="blueprint-grid"></div>
-  <div class="blueprint-scan"></div>
-  <svg class="architecture" viewBox="0 0 600 480" focusable="false" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <pattern id="map-dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.1" fill="#9abfa1" opacity=".35"/></pattern>
-    </defs>
-    <rect width="600" height="480" fill="url(#map-dots)" opacity=".35"/>
-    <g class="architecture-guides" fill="none" stroke="#bad6c0" stroke-width="1">
-      <path d="M40 40h33M40 40v33M560 40h-33M560 40v33M40 438h33M40 438v-33M560 438h-33M560 438v-33"/>
-      <path d="M70 235H525M300 32V448" stroke-dasharray="2 12" opacity=".35"/>
-    </g>
-    <g class="architecture-paths" fill="none" stroke-linecap="round" stroke-linejoin="round">
-      <path class="route-base" d="M216 185H264V125H309"/>
-      <path class="route-base" d="M399 168V293"/>
-      <path class="route-base" d="M216 185H252V337H309"/>
-      <path class="route-motion" d="M216 185H264V125H309"/>
-      <path class="route-motion route-motion-alt" d="M399 168V293"/>
-      <path class="route-motion route-motion-late" d="M216 185H252V337H309"/>
-    </g>
-    <g class="arch-unit">
-      <rect x="60" y="140" width="156" height="90" rx="8"/>
-      <circle class="arch-led" cx="80" cy="162" r="3.5"/>
-      <text class="arch-kicker" x="93" y="166">01 / INTERFACE</text>
-      <text class="arch-label" x="80" y="200">React / Next.js</text>
-    </g>
-    <g class="arch-unit">
-      <rect x="309" y="78" width="180" height="90" rx="8"/>
-      <circle class="arch-led" cx="329" cy="100" r="3.5"/>
-      <text class="arch-kicker" x="342" y="104">02 / SERVICES</text>
-      <text class="arch-label" x="329" y="138">Node / Express</text>
-    </g>
-    <g class="arch-unit">
-      <rect x="309" y="293" width="180" height="90" rx="8"/>
-      <circle class="arch-led" cx="329" cy="315" r="3.5"/>
-      <text class="arch-kicker" x="342" y="319">03 / DATA</text>
-      <text class="arch-label" x="329" y="353">Postgres / Mongo</text>
-    </g>
-    <g class="architecture-junctions">
-      <circle cx="264" cy="185" r="4"/>
-      <circle cx="399" cy="235" r="4"/>
-      <circle cx="252" cy="337" r="4"/>
-    </g>
-    <circle class="arch-signal arch-signal-one" cx="264" cy="125" r="7"/>
-    <circle class="arch-signal arch-signal-two" cx="399" cy="235" r="7"/>
-    <circle class="arch-signal arch-signal-three" cx="252" cy="337" r="7"/>
-    <text class="arch-caption" x="43" y="461">SYSTEM / 001</text>
-    <text class="arch-caption" x="457" y="461">BUILD → DEPLOY</text>
-  </svg>
-  <div class="blueprint-index"><span>ENGINEERING</span><span>01 — 03</span></div>
-</div><div class="wrap hero-content"><div class="eyebrow"><span class="dot"></span> <i data-lucide="terminal" aria-hidden="true"></i> Full-stack developer · Kathmandu, Nepal</div><h1 class="hero-heading"><span class="hero-line">Full-stack developer.</span><br><em class="hero-line hero-line-delay">Focused on the details.</em></h1><p class="lead">Hi, I'm Bharat Adhikari, a full-stack developer with 3+ years of experience building Node.js APIs, React and React Native applications, and reliable software used by 2,000+ people.</p><div class="actions"><a class="button primary" href="#work">Explore my work <i data-lucide="arrow-up-right" aria-hidden="true"></i></a><a class="button" href="https://github.com/bharatadk" target="_blank" rel="noopener noreferrer">GitHub <i data-lucide="arrow-up-right" aria-hidden="true"></i></a></div><div class="hero-meta"><span><i data-lucide="map-pin" aria-hidden="true"></i> Based in Kathmandu</span><span><i data-lucide="briefcase-business" aria-hidden="true"></i> Open to meaningful projects</span><span><i data-lucide="code-2" aria-hidden="true"></i> React · Next.js · Node.js</span></div></div></div>
+<div class="hero" id="home"><div class="hero-art" aria-hidden="true"><div class="hero-grid"></div><div class="orb orb-one"></div><div class="orb orb-two"></div><div class="shape shape-square"></div><div class="shape shape-ring"></div><div class="shape shape-plus">+</div><div class="hero-code">01 / BUILD · SHIP · IMPROVE</div></div><div class="wrap hero-content"><div class="eyebrow"><span class="dot"></span> <i data-lucide="terminal" aria-hidden="true"></i> Full-stack developer · Kathmandu, Nepal</div><h1 class="hero-heading"><span class="hero-line">Full-stack developer.</span><br><em class="hero-line hero-line-delay">Focused on the details.</em></h1><p class="lead">Hi, I'm Bharat Adhikari, a full-stack developer with 3+ years of experience building Node.js APIs, React and React Native applications, and reliable software used by 2,000+ people.</p><div class="actions"><a class="button primary" href="#work">Explore my work <i data-lucide="arrow-up-right" aria-hidden="true"></i></a><a class="button" href="https://github.com/bharatadk" target="_blank" rel="noopener noreferrer">GitHub <i data-lucide="arrow-up-right" aria-hidden="true"></i></a></div><div class="hero-meta"><span><i data-lucide="map-pin" aria-hidden="true"></i> Based in Kathmandu</span><span><i data-lucide="briefcase-business" aria-hidden="true"></i> Open to meaningful projects</span><span><i data-lucide="code-2" aria-hidden="true"></i> React · Next.js · Node.js</span></div></div></div>
 <section id="about"><div class="wrap"><div class="section-head"><div><div class="kicker">01 / About</div><h2>About me.</h2></div></div><div class="about-grid"><div class="about-copy"><p>I'm a computer engineering graduate and full-stack developer at Danphe Innovations. I work on Optonome, a workforce platform serving 2,000+ users and approximately 200 concurrent users, as part of a team of around 10 developers.</p><p>My work spans Node.js/Express APIs, React and React Native features, real-time communication, database migrations, third-party integrations, API security, CI/CD, and production support.</p><p>I care about measurable improvements: I reduced a MongoDB API query from roughly 30 seconds to 5 seconds and helped cut AWS costs by about $280 per month. Outside work, I explore mobile apps, games, and open-source projects.</p></div><div class="fact-list" aria-label="Quick facts"><div><span>Location</span><span>Kathmandu, Nepal</span></div><div><span>Focus</span><span>Frontend & full-stack</span></div><div><span>Education</span><span>B.E., Tribhuvan University</span></div><div><span>License</span><span>NEC Licensed Engineer</span></div><div><span>Approach</span><span>Full-stack Development</span></div></div></div></div></section>
 <section id="skills"><div class="wrap"><div class="section-head"><div><div class="kicker">02 / Expertise</div><h2>Tools I build with.</h2><p class="desc">A practical toolkit across interfaces, services, data, and deployment.</p></div></div><div class="skills">
 <article class="skill"><i class="skill-icon" data-lucide="monitor" aria-hidden="true"></i><h3>Frontend</h3><p>React, Next.js, React Native, Redux, Tailwind CSS, Material UI, HTML5, CSS3, pdf-lib; TypeScript (working knowledge)</p></article>
