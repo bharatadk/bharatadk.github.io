@@ -179,6 +179,11 @@ html{scroll-padding-top:94px}
 @media(max-width:400px){.brand-description{display:none}.nav-menu-button .menu-text{display:none}.nav-menu-button{width:43px;height:40px;justify-content:center;padding:6px}}
 @media(prefers-reduced-motion:reduce){.site-header,.site-header .nav-inner,.site-nav,.site-nav .nav-link,.site-nav .nav-cta,.site-nav .nav-cta svg,.button,.project .arrow{transition:none!important}.site-nav .nav-cta:hover,.button:hover{transform:none!important}.scroll-progress{will-change:auto}}
 
+.site-brand .brand-monogram{color:#fff}
+.site-brand .brand-lockup,.site-brand .brand-name{color:#1c2b21}
+.site-brand .brand-description{color:#7e9083}
+.site-brand .brand-name>span{color:#00b300}
+.site-nav .nav-cta.is-active{box-shadow:0 0 0 3px rgba(0,215,0,.15),inset 0 1px 0 rgba(255,255,255,.4)}
 </style>
 <script defer src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
 </head>
@@ -301,6 +306,10 @@ function updateNavigation(){
     link.classList.toggle('is-active',active);
     if(active)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current');
   }
+  const contactLink=nav.querySelector('.nav-cta');
+  const atContact=current==='contact';
+  contactLink.classList.toggle('is-active',atContact);
+  if(atContact)contactLink.setAttribute('aria-current','location');else contactLink.removeAttribute('aria-current');
   scrollScheduled=false;
 }
 window.addEventListener('scroll',()=>{if(!scrollScheduled){scrollScheduled=true;requestAnimationFrame(updateNavigation);}},{passive:true});
