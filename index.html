@@ -55,7 +55,7 @@ section{padding:79px 0;border-bottom:1px solid var(--border);scroll-margin-top:8
 <footer><div class="wrap foot"><span>© <span id="year">2026</span> Bharat Adhikari.</span><div class="footlinks"><a href="https://github.com/bharatadk" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://www.linkedin.com/in/bharatadk/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="mailto:bharatadk.on@gmail.com">Email</a></div></div></footer>
 <script>
 document.getElementById('year').textContent=new Date().getFullYear();
-if (window.lucide) window.lucide.createIcons();
+document.addEventListener('DOMContentLoaded', () => { if (window.lucide) window.lucide.createIcons(); });
 const toggle=document.getElementById('menu'),nav=document.getElementById('navigation');
 toggle.addEventListener('click',()=>{const isOpen=nav.classList.toggle('open');toggle.setAttribute('aria-expanded',String(isOpen));});
 nav.addEventListener('click',event=>{if(event.target.closest('a')){nav.classList.remove('open');toggle.setAttribute('aria-expanded','false');}});
